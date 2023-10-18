@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
+  // 24252a
   return (
-    <div className="font-poppins bg-[#24252a] text-[#edf0f1]">
-      <nav className="flex items-center justify-between w-[90%] mx-auto py-2">
+    <div className="font-poppins bg-[#131313] text-[#edf0f1]">
+      <nav className="flex items-center justify-between w-[90%] mx-auto py-3">
         <div className="">
           <p className="font-rancho text-4xl border-2 px-3 py-1 rounded-full border-orange-400">
             Obsidian

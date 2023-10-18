@@ -7,6 +7,9 @@ export default {
         poppins: "'Poppins', sans-serif",
         rancho: "'Rancho', cursive",
       },
+      hueRotate: {
+        332: "332deg",
+      },
     },
   },
   plugins: [],

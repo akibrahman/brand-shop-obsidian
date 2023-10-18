@@ -8,3 +8,7 @@
   padding: 3px 10px;
   border-radius: 100px;
 }
+.brand-image {
+  filter: invert(70%) sepia(29%) saturate(2693%) hue-rotate(332deg)
+    brightness(101%) contrast(97%);
+}
