@@ -1,7 +1,9 @@
+import banner from "/Banner.jpg";
+
 const Banner = () => {
   return (
     <div>
-      <p>Banner</p>
+      <img src={banner} className="w-full" alt="" />
     </div>
   );
 };
