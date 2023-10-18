@@ -5,7 +5,9 @@ import App from "./App.jsx";
 import AddProduct from "./Components/AddProduct.jsx";
 import Banner from "./Components/Banner.jsx";
 import Brand from "./Components/Brand.jsx";
+import EditProduct from "./Components/EditProduct.jsx";
 import MyCart from "./Components/MyCart.jsx";
+import Products from "./Components/Products.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -29,12 +31,19 @@ const router = createBrowserRouter([
         element: <AddProduct></AddProduct>,
       },
       {
+        path: "/edit-product/:id",
+        // loader: () => fetch("http://localhost:5000/brands"),
+        element: <EditProduct></EditProduct>,
+      },
+      {
         path: "/my-cart",
         element: <MyCart></MyCart>,
       },
       {
-        path: "/products/:id",
-        element: <MyCart></MyCart>,
+        path: "/products/:brand",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.brand}`),
+        element: <Products></Products>,
       },
     ],
   },

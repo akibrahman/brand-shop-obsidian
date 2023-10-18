@@ -21,6 +21,17 @@ const AddProduct = () => {
       shortDes,
       rating,
     };
+    fetch("http://localhost:5000/product-add", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
   return (
     <div className="bg-[#131313] py-20">
