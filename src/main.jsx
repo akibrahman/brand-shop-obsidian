@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
+import AddProduct from "./Components/AddProduct.jsx";
 import Banner from "./Components/Banner.jsx";
+import MyCart from "./Components/MyCart.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -13,6 +15,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Banner></Banner>,
+      },
+      {
+        path: "/add-product",
+        element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "/my-cart",
+        element: <MyCart></MyCart>,
       },
     ],
   },
