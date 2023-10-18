@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import AddProduct from "./Components/AddProduct.jsx";
 import Banner from "./Components/Banner.jsx";
 import Brand from "./Components/Brand.jsx";
+import DetailsProduct from "./Components/DetailsProduct.jsx";
 import EditProduct from "./Components/EditProduct.jsx";
 import MyCart from "./Components/MyCart.jsx";
 import Products from "./Components/Products.jsx";
@@ -45,6 +46,12 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/products/${params.brand}`),
         element: <Products></Products>,
+      },
+      {
+        path: "/product/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/product/${params.id}`),
+        element: <DetailsProduct></DetailsProduct>,
       },
     ],
   },

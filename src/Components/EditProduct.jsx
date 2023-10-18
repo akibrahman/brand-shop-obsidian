@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Dna } from "react-loader-spinner";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const EditProduct = () => {
   const { _id, name, image, type, price, brandName, shortDes, rating } =
     useLoaderData();
+  const navigate = useNavigate();
   const [brands, setBrands] = useState(null);
   useEffect(() => {
     fetch("http://localhost:5000/brands")
@@ -63,6 +65,12 @@ const EditProduct = () => {
   } else {
     return (
       <div className="bg-[#131313] py-20">
+        <AiOutlineArrowLeft
+          onClick={() => {
+            navigate(-1);
+          }}
+          className="text-xl bg-orange-400 w-9 h-9 rounded-full p-2 cursor-pointer ml-56 mb-3 text-white"
+        ></AiOutlineArrowLeft>
         <div className="w-max mx-auto rounded-md border-2 bg-[#24252a]">
           <form onSubmit={handleForm}>
             <div className="flex gap-20 justify-evenly pt-12 px-24 rounded-md">
