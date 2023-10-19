@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
 import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 
 const MyCart = () => {
@@ -9,15 +10,28 @@ const MyCart = () => {
   const loadedData = useLoaderData();
   const [products, setProducts] = useState(loadedData);
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/cartDelete/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        const remaining = products.filter((p) => p._id !== id);
-        setProducts(remaining);
-      });
+    Swal.fire({
+      title: "Are you sure to delete?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/cartDelete/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            const remaining = products.filter((p) => p._id !== id);
+            setProducts(remaining);
+          });
+        Swal.fire("Deleted!", "Your Product has been deleted.", "success");
+      }
+    });
   };
   return (
     <div style={{ backgroundColor: bg, color: textC }} className="">

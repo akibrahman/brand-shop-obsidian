@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Dna } from "react-loader-spinner";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 
 const EditProduct = () => {
@@ -36,19 +37,36 @@ const EditProduct = () => {
       shortDes,
       rating,
     };
-    fetch(`http://localhost:5000/product/edit/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
-          alert("Updated");
-        }
-      });
+    Swal.fire({
+      title: "Everything Entered OK?",
+      text: "Your Modification will be applied",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Update it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/product/edit/${_id}`, {
+          method: "PUT",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(updatedProduct),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.modifiedCount > 0) {
+              Swal.fire(
+                "Updated!",
+                "Your Product has been deleted.",
+                "success"
+              );
+              navigate(-1);
+            }
+          });
+      }
+    });
   };
 
   if (!brands) {

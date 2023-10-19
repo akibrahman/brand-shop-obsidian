@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 
 const AddProduct = () => {
@@ -24,22 +25,40 @@ const AddProduct = () => {
       shortDes,
       rating,
     };
-    fetch("http://localhost:5000/product-add", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newProduct),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Everything is perfectly Entered!",
+      icon: "info",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Submit",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch("http://localhost:5000/product-add", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newProduct),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            form.reset();
+            Swal.fire(
+              "Added!",
+              "Your product has beeen added successfully",
+              "success"
+            );
+          });
+      }
+    });
   };
   return (
     <div style={{ backgroundColor: bg, color: textC }} className="py-20">
       <div className="w-max mx-auto rounded-md border-2 bg-[#24252a]">
-        <form onSubmit={handleForm}>
+        <form className="text-[#131313]" onSubmit={handleForm}>
           <div className="flex gap-20 justify-evenly pt-12 px-24 rounded-md">
             <div className="flex flex-col justify-between">
               <div className="flex flex-col gap-2">
@@ -47,6 +66,7 @@ const AddProduct = () => {
                   Name:
                 </label>
                 <input
+                  required
                   className="px-4 py-3 rounded-md focus:outline-none"
                   type="text"
                   name="name"
@@ -59,6 +79,7 @@ const AddProduct = () => {
                   Image URL:
                 </label>
                 <input
+                  required
                   className="px-4 py-3 rounded-md focus:outline-none"
                   type="text"
                   name="image"
@@ -71,6 +92,7 @@ const AddProduct = () => {
                   Type:
                 </label>
                 <input
+                  required
                   className="px-4 py-3 rounded-md focus:outline-none"
                   type="text"
                   name="type"
@@ -83,6 +105,7 @@ const AddProduct = () => {
                   Price:
                 </label>
                 <input
+                  required
                   className="px-4 py-3 rounded-md focus:outline-none"
                   type="number"
                   name="price"
@@ -97,6 +120,7 @@ const AddProduct = () => {
                   Brand Name:
                 </label>
                 <select
+                  required
                   required
                   name="brandName"
                   className="px-4 py-3 rounded-md focus:outline-none text-[#9CA7C4]"
@@ -118,6 +142,7 @@ const AddProduct = () => {
                   Short Description:
                 </label>
                 <textarea
+                  required
                   className="rounded-md focus:outline-none px-2 py-1"
                   type="text"
                   name="shortDes"
@@ -130,6 +155,7 @@ const AddProduct = () => {
                   Rating:
                 </label>
                 <input
+                  required
                   className="px-4 py-3 rounded-md focus:outline-none"
                   type="number"
                   step="0.01"

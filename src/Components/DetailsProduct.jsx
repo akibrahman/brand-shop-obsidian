@@ -2,6 +2,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 
 import { useContext } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 
 const DetailsProduct = () => {
@@ -42,11 +43,19 @@ const DetailsProduct = () => {
             body: JSON.stringify(thisProduct),
           })
             .then((res) => res.json())
-            .then((data) => {
-              console.log(data);
+            .then(() => {
+              Swal.fire({
+                icon: "success",
+                title: "Product Added to Cart",
+                showConfirmButton: true,
+              });
             });
         } else {
-          alert("Koyta Lage Vai");
+          Swal.fire({
+            icon: "info",
+            title: "Product is Already Added",
+            showConfirmButton: true,
+          });
         }
       });
   };
