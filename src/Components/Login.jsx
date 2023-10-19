@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AiOutlineGithub } from "react-icons/ai";
 import { BsGoogle } from "react-icons/bs";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "./AuthProvider";
 import loginsvg from "/login.svg";
 
@@ -17,6 +18,10 @@ const Login = () => {
     logInUser(email, password)
       .then(() => {
         navigate(location?.state ? location.state : "/");
+        toast.success("Logged In", {
+          position: "top-center",
+          autoClose: 2000,
+        });
       })
       .catch((error) => console.log(error));
   };

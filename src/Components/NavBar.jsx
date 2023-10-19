@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { BiUser } from "react-icons/bi";
 import { Link, NavLink } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "./AuthProvider";
 
 const NavBar = () => {
@@ -8,7 +9,12 @@ const NavBar = () => {
   // 24252a
   const handleLogOut = () => {
     logOut()
-      .then()
+      .then(() => {
+        toast.success("Logged Out", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+      })
       .catch((e) => console.log(e));
   };
   return (

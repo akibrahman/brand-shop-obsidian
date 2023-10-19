@@ -2,12 +2,14 @@ import { updateProfile } from "firebase/auth";
 import { useContext } from "react";
 import { AiOutlineGithub } from "react-icons/ai";
 import { BsGoogle } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { AuthContext } from "./AuthProvider";
 import registrationsvg from "/reg.svg";
 
 const Registration = () => {
   const { AS, setAS, auth, createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleRegistration = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -15,6 +17,25 @@ const Registration = () => {
     const email = form.email.value;
     const url = form.url.value;
     const password = form.password.value;
+    if (password.length < 6) {
+      toast.warning("Less than 6", {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      toast.warning("No Cap", {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      return;
+    } else if (!/[@#$%&]/.test(password)) {
+      toast.warning("No Special", {
+        position: "top-center",
+        autoClose: 2000,
+      });
+      return;
+    }
     createUser(email, password)
       .then((data) => {
         console.log(data);
@@ -24,6 +45,11 @@ const Registration = () => {
         })
           .then(() => {
             setAS(!AS);
+            navigate("/");
+            toast.success("Logged In", {
+              position: "top-center",
+              autoClose: 2000,
+            });
           })
           .catch((error) => console.log(error));
       })
