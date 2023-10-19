@@ -11,8 +11,8 @@ const PrivateRoute = ({ children }) => {
       <div className="flex justify-center items-center bg-[#131313] h-screen">
         <Dna
           visible={true}
-          height="120"
-          width="120"
+          height="100"
+          width="100"
           ariaLabel="dna-loading"
           wrapperStyle={{}}
           wrapperClass="dna-wrapper"
