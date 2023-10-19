@@ -26,16 +26,25 @@ const DetailsProduct = () => {
       shortDes,
       rating,
     };
-    fetch("http://localhost:5000/addtocart", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(thisProduct),
-    })
+    fetch("http://localhost:5000/cart/products")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        const check = data.find((d) => d.productID === productID);
+        if (!check) {
+          fetch("http://localhost:5000/addtocart", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(thisProduct),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+            });
+        } else {
+          alert("Koyta Lage Vai");
+        }
       });
   };
   return (
