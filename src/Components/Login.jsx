@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { AiOutlineGithub } from "react-icons/ai";
 import { BsGoogle } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import loginsvg from "/login.svg";
 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { logInUser } = useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
@@ -13,7 +15,9 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     logInUser(email, password)
-      .then()
+      .then(() => {
+        navigate(location?.state ? location.state : "/");
+      })
       .catch((error) => console.log(error));
   };
   return (
