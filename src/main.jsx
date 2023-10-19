@@ -8,6 +8,7 @@ import Banner from "./Components/Banner.jsx";
 import Brand from "./Components/Brand.jsx";
 import DetailsProduct from "./Components/DetailsProduct.jsx";
 import EditProduct from "./Components/EditProduct.jsx";
+import ErrorPage from "./Components/ErrorPage.jsx";
 import Login from "./Components/Login.jsx";
 import MyCart from "./Components/MyCart.jsx";
 import PrivateRoute from "./Components/PrivateRoute.jsx";
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
