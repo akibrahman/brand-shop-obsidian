@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Dna } from "react-loader-spinner";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 const EditProduct = () => {
+  const { bg, textC } = useContext(AuthContext);
   const { _id, name, image, type, price, brandName, shortDes, rating } =
     useLoaderData();
   const navigate = useNavigate();
@@ -51,7 +53,10 @@ const EditProduct = () => {
 
   if (!brands) {
     return (
-      <div className="flex justify-center items-center bg-[#131313] h-screen">
+      <div
+        style={{ backgroundColor: bg }}
+        className="flex justify-center items-center h-screen"
+      >
         <Dna
           visible={true}
           height="120"
@@ -64,7 +69,7 @@ const EditProduct = () => {
     );
   } else {
     return (
-      <div className="bg-[#131313] py-20">
+      <div style={{ backgroundColor: bg, color: textC }} className="py-20">
         <AiOutlineArrowLeft
           onClick={() => {
             navigate(-1);
@@ -72,7 +77,7 @@ const EditProduct = () => {
           className="text-xl bg-orange-400 w-9 h-9 rounded-full p-2 cursor-pointer ml-56 mb-3 text-white"
         ></AiOutlineArrowLeft>
         <div className="w-max mx-auto rounded-md border-2 bg-[#24252a]">
-          <form onSubmit={handleForm}>
+          <form className="text-[#131313]" onSubmit={handleForm}>
             <div className="flex gap-20 justify-evenly pt-12 px-24 rounded-md">
               <div className="flex flex-col justify-between">
                 <div className="flex flex-col gap-2">

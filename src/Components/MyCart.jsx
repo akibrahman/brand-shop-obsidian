@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 const MyCart = () => {
+  const { bg, textC } = useContext(AuthContext);
   const loadedData = useLoaderData();
   const [products, setProducts] = useState(loadedData);
   const handleDelete = (id) => {
@@ -18,10 +20,11 @@ const MyCart = () => {
       });
   };
   return (
-    <div className="bg-[#131313] text-white">
+    <div style={{ backgroundColor: bg, color: textC }} className="">
       <div className="grid grid-cols-2 w-[80%] mx-auto gap-6 py-20">
         {products.map((product) => (
           <div
+            style={{ borderColor: textC }}
             key={product._id}
             className="flex items-center gap-10 border-2 rounded-xl p-2"
           >

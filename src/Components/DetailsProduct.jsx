@@ -1,8 +1,11 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 
+import { useContext } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
+import { AuthContext } from "./AuthProvider";
 
 const DetailsProduct = () => {
+  const { bg, textC } = useContext(AuthContext);
   const navigate = useNavigate();
   const data = useLoaderData();
   const {
@@ -49,7 +52,7 @@ const DetailsProduct = () => {
   };
   return (
     <div>
-      <div className="bg-[#24252A] flex text-white gap-8">
+      <div style={{ backgroundColor: bg, color: textC }} className="flex gap-8">
         <div className="w-1/2 h-[calc(100vh-76px)] relative">
           <img className="w-full h-full" src={image} alt="" />
           <AiOutlineArrowLeft

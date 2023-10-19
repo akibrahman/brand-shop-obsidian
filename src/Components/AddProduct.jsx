@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 const AddProduct = () => {
+  const { bg, textC } = useContext(AuthContext);
   const data = useLoaderData();
   const handleForm = (e) => {
     e.preventDefault();
@@ -34,7 +37,7 @@ const AddProduct = () => {
       });
   };
   return (
-    <div className="bg-[#131313] py-20">
+    <div style={{ backgroundColor: bg, color: textC }} className="py-20">
       <div className="w-max mx-auto rounded-md border-2 bg-[#24252a]">
         <form onSubmit={handleForm}>
           <div className="flex gap-20 justify-evenly pt-12 px-24 rounded-md">

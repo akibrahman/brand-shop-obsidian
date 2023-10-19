@@ -1,11 +1,13 @@
 import { useContext } from "react";
-import { BiUser } from "react-icons/bi";
+import { BiMoon, BiUser } from "react-icons/bi";
+import { BsSun } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "./AuthProvider";
 
 const NavBar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { isDark, bg, textC, setIsDark, user, logOut } =
+    useContext(AuthContext);
   // 24252a
   const handleLogOut = () => {
     logOut()
@@ -17,8 +19,15 @@ const NavBar = () => {
       })
       .catch((e) => console.log(e));
   };
+  const handleMode = () => {
+    setIsDark(!isDark);
+    console.log(isDark);
+  };
   return (
-    <div className="font-poppins bg-[#131313] text-[#edf0f1]">
+    <div
+      style={{ backgroundColor: bg, color: textC }}
+      className="font-poppins select-none"
+    >
       <nav className="flex items-center justify-between w-[90%] mx-auto py-3">
         <div className="">
           <p className="font-rancho text-4xl border-2 px-3 py-1 rounded-full border-orange-400">
@@ -36,7 +45,7 @@ const NavBar = () => {
             <p>My Cart</p>
           </NavLink>
         </div>
-        <div className="">
+        <div className="flex items-center gap-2">
           {!user ? (
             <Link to="/login">
               {" "}
@@ -63,6 +72,17 @@ const NavBar = () => {
                 Log Out
               </button>
             </div>
+          )}
+          {!isDark ? (
+            <BiMoon
+              onClick={handleMode}
+              className="text-2xl cursor-pointer"
+            ></BiMoon>
+          ) : (
+            <BsSun
+              onClick={handleMode}
+              className="text-2xl cursor-pointer"
+            ></BsSun>
           )}
         </div>
       </nav>

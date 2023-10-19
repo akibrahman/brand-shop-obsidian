@@ -23,7 +23,20 @@ const Login = () => {
           autoClose: 2000,
         });
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        if (error.code == "auth/invalid-login-credentials") {
+          toast.error("Invalid user or password", {
+            position: "top-center",
+            autoClose: 2000,
+          });
+        } else {
+          toast.error("Something went wrong", {
+            position: "top-center",
+            autoClose: 2000,
+          });
+        }
+      });
   };
   return (
     <div className="bg-[#131313] text-white">

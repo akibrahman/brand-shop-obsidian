@@ -5,7 +5,7 @@ import NavBar from "./Components/NavBar";
 
 function App() {
   return (
-    <div className="font-poppins">
+    <div className="font-poppins duration-300 transition-all ease-in-out">
       <ToastContainer />
       <NavBar></NavBar>
       <Outlet></Outlet>

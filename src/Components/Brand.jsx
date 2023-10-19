@@ -1,11 +1,17 @@
+import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 const Brand = () => {
   const data = useLoaderData();
+  const { bg, textC } = useContext(AuthContext);
   return (
-    <div className="pt-12 bg-[#131313] border-t">
-      <p className="text-center text-4xl text-white">Our Brands</p>
-      <div className="mt-10 rounded-md w-[70%] mx-auto bg-[#131313] grid grid-cols-3 gap-5 p-3">
+    <div
+      style={{ backgroundColor: bg, color: textC }}
+      className="pt-12 bg-[#131313] border-t"
+    >
+      <p className="text-center text-4xl">Our Brands</p>
+      <div className="mt-10 rounded-md w-[70%] mx-auto  grid grid-cols-3 gap-5 p-3">
         {data.map((brand) => (
           <Link
             to={`/products/${brand.BrandName.toLowerCase()}`}

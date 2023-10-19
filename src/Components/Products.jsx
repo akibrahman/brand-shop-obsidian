@@ -1,15 +1,18 @@
+import { useContext } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { BsArrowRight } from "react-icons/bs";
 import { HiPencil } from "react-icons/hi";
 import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 import empty from "/empty.svg";
 
 const Products = () => {
+  const { textC, bg } = useContext(AuthContext);
   const data = useLoaderData();
   const brand = useParams();
   const navigate = useNavigate();
   return (
-    <div className="bg-[#131313] text-white">
+    <div style={{ backgroundColor: bg, color: textC }} className="">
       <div className="pt-10 w-[90%] mx-auto flex items-center gap-3">
         <AiOutlineArrowLeft
           onClick={() => {
@@ -29,7 +32,7 @@ const Products = () => {
         </p>
       </div>
       {data.length > 0 ? (
-        <div className="w-[80%] mx-auto grid grid-cols-4 gap-6 pb-20 mt-10">
+        <div className="w-[80%] mx-auto grid grid-cols-4 gap-6 pb-20 mt-10 text-white">
           {data.map((product) => (
             <div
               key={product._id}
