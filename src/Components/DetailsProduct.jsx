@@ -4,8 +4,40 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const DetailsProduct = () => {
   const navigate = useNavigate();
-  const { name, image, brandName, price, type, shortDes, rating } =
-    useLoaderData();
+  const data = useLoaderData();
+  const {
+    _id: productID,
+    name,
+    image,
+    brandName,
+    price,
+    type,
+    shortDes,
+    rating,
+  } = data;
+  const addToCart = () => {
+    const thisProduct = {
+      productID,
+      name,
+      image,
+      brandName,
+      price,
+      type,
+      shortDes,
+      rating,
+    };
+    fetch("http://localhost:5000/addtocart", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(thisProduct),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  };
   return (
     <div>
       <div className="bg-[#24252A] flex text-white gap-8">
@@ -40,7 +72,10 @@ const DetailsProduct = () => {
             </p>
             <div className="pt-5 flex items-center justify-between pr-2">
               <p className="text-3xl text-orange-400 font-bold">${price}</p>
-              <button className="capitalize text-xl bg-orange-400 hover:bg-orange-500 duration-300 px-4 py-2 rounded-lg active:scale-75">
+              <button
+                onClick={addToCart}
+                className="capitalize text-xl bg-orange-400 hover:bg-orange-500 duration-300 px-4 py-2 rounded-lg active:scale-75"
+              >
                 Add to Cart
               </button>
             </div>
