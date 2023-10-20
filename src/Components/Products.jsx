@@ -7,12 +7,12 @@ import { AuthContext } from "./AuthProvider";
 import empty from "/empty.svg";
 
 const Products = () => {
-  const { textC, bg } = useContext(AuthContext);
+  const { isDark } = useContext(AuthContext);
   const data = useLoaderData();
   const brand = useParams();
   const navigate = useNavigate();
   return (
-    <div style={{ backgroundColor: bg, color: textC }} className="">
+    <div>
       <div className="pt-10 w-[90%] mx-auto flex items-center gap-3">
         <AiOutlineArrowLeft
           onClick={() => {
@@ -36,7 +36,9 @@ const Products = () => {
           {data.map((product) => (
             <div
               key={product._id}
-              className="bg-[#24252A] border p-3 rounded-lg"
+              className={` ${
+                isDark ? "bg-[#AAADB2] text-[#131313]" : "bg-[#24252A]"
+              } border p-3 rounded-lg`}
             >
               <img
                 className="mb-5 mx-auto w-3/4 h-[200px] rounded-md"
@@ -49,7 +51,11 @@ const Products = () => {
                 </p>
                 <p>
                   Price:{" "}
-                  <span className="font-semibold text-orange-400 text-xl">
+                  <span
+                    className={`font-semibold ${
+                      isDark ? "text-orange-700" : "text-orange-400"
+                    } text-xl`}
+                  >
                     ${product.price}
                   </span>
                 </p>
@@ -75,10 +81,7 @@ const Products = () => {
           ))}
         </div>
       ) : (
-        <div
-          style={{ backgroundColor: bg, color: textC }}
-          className="h-[50vh] flex items-center justify-center gap-10"
-        >
+        <div className="h-[50vh] flex items-center justify-center gap-10">
           <p className="text-3xl">There is no Product under this Brand</p>
           <img className="w-[250px]" src={empty} alt="" />
         </div>

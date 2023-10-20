@@ -9,7 +9,7 @@ import loginsvg from "/login.svg";
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { logInUser, googleLogin, githubLogin, bg, textC } =
+  const { logInUser, googleLogin, githubLogin, isDark } =
     useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
@@ -73,7 +73,9 @@ const Login = () => {
       });
   };
   return (
-    <div style={{ backgroundColor: bg, color: textC }}>
+    <div
+      className={`${isDark ? "bg-[#AAADB2]" : "bg-[#131313] text-[#edf0f1]"}`}
+    >
       <div className="w-[70%] mx-auto flex items-center justify-between py-20">
         <form onSubmit={handleLogin} className="flex flex-col items-center">
           <p className="text-2xl font-semibold mb-8">Log In</p>
@@ -108,7 +110,11 @@ const Login = () => {
           <p className="mt-5">
             Do not have an Account{" "}
             <Link to="/registration">
-              <span className="font-semibold text-orange-400 border rounded-full px-3 py-1 ml-2 cursor-pointer inline-block active:scale-90 duration-300 select-none">
+              <span
+                className={`font-semibold ${
+                  isDark ? "text-orange-700" : "text-orange-400"
+                } border rounded-full px-3 py-1 ml-2 cursor-pointer inline-block active:scale-90 duration-300 select-none`}
+              >
                 Register Here
               </span>
             </Link>

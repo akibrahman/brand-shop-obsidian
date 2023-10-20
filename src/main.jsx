@@ -10,6 +10,7 @@ import DetailsProduct from "./Components/DetailsProduct.jsx";
 import EditProduct from "./Components/EditProduct.jsx";
 import ErrorPage from "./Components/ErrorPage.jsx";
 import Login from "./Components/Login.jsx";
+import MV from "./Components/MV.jsx";
 import MyCart from "./Components/MyCart.jsx";
 import PrivateRoute from "./Components/PrivateRoute.jsx";
 import Products from "./Components/Products.jsx";
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <Banner></Banner>
+            <MV></MV>
             <Brand></Brand>
             <Review></Review>
           </>

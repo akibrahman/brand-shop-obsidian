@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 
 const AddProduct = () => {
-  const { bg, textC } = useContext(AuthContext);
+  const { isDark } = useContext(AuthContext);
   const data = useLoaderData();
   const handleForm = (e) => {
     e.preventDefault();
@@ -56,13 +56,20 @@ const AddProduct = () => {
     });
   };
   return (
-    <div style={{ backgroundColor: bg, color: textC }} className="py-20">
-      <div className="w-max mx-auto rounded-md border-2 bg-[#24252a]">
-        <form className="text-[#131313]" onSubmit={handleForm}>
+    <div className="py-20">
+      <div
+        className={`w-max mx-auto rounded-md border-2 ${
+          isDark ? "bg-[#AAADB2]" : "bg-[#24252a]"
+        }`}
+      >
+        <form
+          className={`${isDark ? "text-[#131313]" : "text-[#7e8185]"}`}
+          onSubmit={handleForm}
+        >
           <div className="flex gap-20 justify-evenly pt-12 px-24 rounded-md">
             <div className="flex flex-col justify-between">
               <div className="flex flex-col gap-2">
-                <label className="text-white font-semibold text-md" htmlFor="">
+                <label className=" font-semibold text-md" htmlFor="">
                   Name:
                 </label>
                 <input
@@ -75,7 +82,7 @@ const AddProduct = () => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-white font-semibold text-md" htmlFor="">
+                <label className="font-semibold text-md" htmlFor="">
                   Image URL:
                 </label>
                 <input
@@ -88,7 +95,7 @@ const AddProduct = () => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-white font-semibold text-md" htmlFor="">
+                <label className="font-semibold text-md" htmlFor="">
                   Type:
                 </label>
                 <input
@@ -101,7 +108,7 @@ const AddProduct = () => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-white font-semibold text-md" htmlFor="">
+                <label className="font-semibold text-md" htmlFor="">
                   Price:
                 </label>
                 <input
@@ -116,7 +123,7 @@ const AddProduct = () => {
 
             <div className="flex flex-col gap-8">
               <div className="flex flex-col gap-2">
-                <label className="text-white font-semibold text-md" htmlFor="">
+                <label className="font-semibold text-md" htmlFor="">
                   Brand Name:
                 </label>
                 <select
@@ -137,7 +144,7 @@ const AddProduct = () => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-white font-semibold text-md" htmlFor="">
+                <label className="font-semibold text-md" htmlFor="">
                   Short Description:
                 </label>
                 <textarea
@@ -150,7 +157,7 @@ const AddProduct = () => {
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-white font-semibold text-md" htmlFor="">
+                <label className="font-semibold text-md" htmlFor="">
                   Rating:
                 </label>
                 <input

@@ -6,8 +6,7 @@ import { toast } from "react-toastify";
 import { AuthContext } from "./AuthProvider";
 
 const NavBar = () => {
-  const { isDark, bg, textC, setIsDark, user, logOut } =
-    useContext(AuthContext);
+  const { isDark, setIsDark, user, logOut } = useContext(AuthContext);
   // 24252a
   const handleLogOut = () => {
     logOut()
@@ -21,13 +20,9 @@ const NavBar = () => {
   };
   const handleMode = () => {
     setIsDark(!isDark);
-    console.log(isDark);
   };
   return (
-    <div
-      style={{ backgroundColor: bg, color: textC }}
-      className="font-poppins select-none"
-    >
+    <div className="font-poppins select-none">
       <nav className="flex items-center justify-between w-[90%] mx-auto py-3">
         <div className="">
           <p className="font-rancho text-4xl border-2 px-3 py-1 rounded-full border-orange-400">

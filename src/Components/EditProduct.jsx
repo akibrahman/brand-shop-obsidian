@@ -6,9 +6,9 @@ import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 
 const EditProduct = () => {
-  const { bg, textC } = useContext(AuthContext);
   const { _id, name, image, type, price, brandName, shortDes, rating } =
     useLoaderData();
+  const { isDark } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const [brands, setBrands] = useState(null);
@@ -73,10 +73,7 @@ const EditProduct = () => {
 
   if (!brands) {
     return (
-      <div
-        style={{ backgroundColor: bg }}
-        className="flex justify-center items-center h-screen"
-      >
+      <div className="flex justify-center items-center h-screen">
         <Dna
           visible={true}
           height="120"
@@ -89,22 +86,26 @@ const EditProduct = () => {
     );
   } else {
     return (
-      <div style={{ backgroundColor: bg, color: textC }} className="py-20">
+      <div className="py-20">
         <AiOutlineArrowLeft
           onClick={() => {
             navigate(-1);
           }}
           className="text-xl bg-orange-400 w-9 h-9 rounded-full p-2 cursor-pointer ml-56 mb-3 text-white"
         ></AiOutlineArrowLeft>
-        <div className="w-max mx-auto rounded-md border-2 bg-[#24252a]">
-          <form className="text-[#131313]" onSubmit={handleForm}>
+        <div
+          className={`w-max mx-auto rounded-md border-2 ${
+            isDark ? "bg-[#AAADB2]" : "bg-[#24252a]"
+          }`}
+        >
+          <form
+            className={`${isDark ? "text-[#131313]" : "text-[#7e8185]"}`}
+            onSubmit={handleForm}
+          >
             <div className="flex gap-20 justify-evenly pt-12 px-24 rounded-md">
               <div className="flex flex-col justify-between">
                 <div className="flex flex-col gap-2">
-                  <label
-                    className="text-white font-semibold text-md"
-                    htmlFor=""
-                  >
+                  <label className="font-semibold text-md" htmlFor="">
                     Name:
                   </label>
                   <input
@@ -117,10 +118,7 @@ const EditProduct = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label
-                    className="text-white font-semibold text-md"
-                    htmlFor=""
-                  >
+                  <label className="font-semibold text-md" htmlFor="">
                     Image URL:
                   </label>
                   <input
@@ -133,10 +131,7 @@ const EditProduct = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label
-                    className="text-white font-semibold text-md"
-                    htmlFor=""
-                  >
+                  <label className="font-semibold text-md" htmlFor="">
                     Type:
                   </label>
                   <input
@@ -149,10 +144,7 @@ const EditProduct = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label
-                    className="text-white font-semibold text-md"
-                    htmlFor=""
-                  >
+                  <label className="font-semibold text-md" htmlFor="">
                     Price:
                   </label>
                   <input
@@ -167,10 +159,7 @@ const EditProduct = () => {
 
               <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-2">
-                  <label
-                    className="text-white font-semibold text-md"
-                    htmlFor=""
-                  >
+                  <label className="font-semibold text-md" htmlFor="">
                     Brand Name:
                   </label>
                   <select
@@ -191,10 +180,7 @@ const EditProduct = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label
-                    className="text-white font-semibold text-md"
-                    htmlFor=""
-                  >
+                  <label className="font-semibold text-md" htmlFor="">
                     Short Description:
                   </label>
                   <textarea
@@ -207,10 +193,7 @@ const EditProduct = () => {
                 </div>
 
                 <div className="flex flex-col gap-2">
-                  <label
-                    className="text-white font-semibold text-md"
-                    htmlFor=""
-                  >
+                  <label className="font-semibold text-md" htmlFor="">
                     Rating:
                   </label>
                   <input

@@ -2,7 +2,7 @@ import banner from "/Banner.jpg";
 
 const Banner = () => {
   return (
-    <div>
+    <div className="border-b">
       <img src={banner} className="w-full" alt="" />
     </div>
   );

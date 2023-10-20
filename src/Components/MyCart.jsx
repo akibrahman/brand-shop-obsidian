@@ -2,11 +2,12 @@ import { useContext, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
 import { Link, useLoaderData } from "react-router-dom";
+
 import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 
 const MyCart = () => {
-  const { bg, textC } = useContext(AuthContext);
+  const { isDark } = useContext(AuthContext);
   const loadedData = useLoaderData();
   const [products, setProducts] = useState(loadedData);
   const handleDelete = (id) => {
@@ -15,6 +16,8 @@ const MyCart = () => {
       text: "This product will be removed from your cart",
       icon: "warning",
       showCancelButton: true,
+      background: "#111",
+      color: "#fff",
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
@@ -34,17 +37,24 @@ const MyCart = () => {
     });
   };
   return (
-    <div style={{ backgroundColor: bg, color: textC }} className="">
+    <div>
       <div className="grid grid-cols-2 w-[80%] mx-auto gap-6 py-20">
         {products.map((product) => (
           <div
-            style={{ borderColor: textC }}
             key={product._id}
-            className="flex items-center gap-10 border-2 rounded-xl p-2"
+            className={`flex items-center gap-10 border-2 rounded-xl p-2 ${
+              !isDark ? "bg-[#24252A]" : "bg-[#AAADB2]"
+            }`}
           >
             <img className="w-32 h-36 rounded-xl" src={product.image} alt="" />
             <div className="flex-1">
-              <p className="text-orange-400 text-xl">{product.name}</p>
+              <p
+                className={`${
+                  !isDark ? "text-orange-400" : "text-orange-700"
+                } text-xl`}
+              >
+                {product.name}
+              </p>
               <p>{product.brandName}</p>
               <p>{product.type}</p>
             </div>

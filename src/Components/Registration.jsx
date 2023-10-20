@@ -8,7 +8,7 @@ import { AuthContext } from "./AuthProvider";
 import registrationsvg from "/reg.svg";
 
 const Registration = () => {
-  const { AS, setAS, auth, createUser, githubLogin, googleLogin, bg, textC } =
+  const { AS, setAS, auth, createUser, githubLogin, googleLogin, isDark } =
     useContext(AuthContext);
   const navigate = useNavigate();
   const handleRegistration = (e) => {
@@ -89,8 +89,10 @@ const Registration = () => {
       });
   };
   return (
-    <div style={{ backgroundColor: bg, color: textC }}>
-      <div className="w-[70%] mx-auto flex flex-row-reverse items-center justify-between py-20">
+    <div
+      className={`${isDark ? "bg-[#AAADB2]" : "bg-[#131313] text-[#edf0f1]"}`}
+    >
+      <div className="w-[70%] mx-auto flex items-center justify-between py-20">
         <form
           onSubmit={handleRegistration}
           className="flex flex-col items-center"
@@ -140,7 +142,11 @@ const Registration = () => {
             Already have an Account{" "}
             <Link to="/login">
               {" "}
-              <span className="font-semibold text-orange-400 border rounded-full px-3 py-1 ml-2 cursor-pointer inline-block active:scale-90 duration-300 select-none">
+              <span
+                className={`font-semibold ${
+                  isDark ? "text-orange-700" : "text-orange-400"
+                } border rounded-full px-3 py-1 ml-2 cursor-pointer inline-block active:scale-90 duration-300 select-none`}
+              >
                 Login Here
               </span>
             </Link>
