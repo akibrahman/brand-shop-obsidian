@@ -1,7 +1,12 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 
 import { useContext } from "react";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import {
+  AiOutlineArrowLeft,
+  AiOutlineStar,
+  AiTwotoneStar,
+} from "react-icons/ai";
+import Rating from "react-rating";
 import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 
@@ -59,6 +64,7 @@ const DetailsProduct = () => {
         }
       });
   };
+
   return (
     <div>
       <div style={{ backgroundColor: bg, color: textC }} className="flex gap-8">
@@ -100,13 +106,25 @@ const DetailsProduct = () => {
                 Add to Cart
               </button>
             </div>
-            <p className="pt-5">
-              Rating:{" "}
-              <span className="text-orange-400 text-2xl border-2 rounded-full border-orange-400 p-1 mx-2">
-                {rating}
-              </span>{" "}
-              Out of 5.0
-            </p>
+            <div className="pt-5 flex items-center gap-6">
+              <p className="">
+                Rating:{" "}
+                <span className="text-orange-400 text-2xl border-2 rounded-full border-orange-400 p-1 mx-2">
+                  {rating}
+                </span>{" "}
+                Out of 5.0
+              </p>
+              <Rating
+                initialRating={rating}
+                readonly
+                emptySymbol={
+                  <AiOutlineStar className="text-3xl text-orange-400"></AiOutlineStar>
+                }
+                fullSymbol={
+                  <AiTwotoneStar className="text-3xl text-orange-400"></AiTwotoneStar>
+                }
+              />
+            </div>
             <p className="pt-7">Description:</p>
             <p className=" border-l-2 border-orange-400 pl-3 ml-3 rounded-md text-orange-400 font-semibold text-base w-[90%]">
               {shortDes}

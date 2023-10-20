@@ -8,7 +8,8 @@ import { AuthContext } from "./AuthProvider";
 import registrationsvg from "/reg.svg";
 
 const Registration = () => {
-  const { AS, setAS, auth, createUser } = useContext(AuthContext);
+  const { AS, setAS, auth, createUser, githubLogin, googleLogin, bg, textC } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const handleRegistration = (e) => {
     e.preventDefault();
@@ -57,8 +58,38 @@ const Registration = () => {
         console.log(error);
       });
   };
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then(() => {
+        toast.success("Logged In", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+      })
+      .catch((error) => {
+        toast.error(error.message, {
+          position: "top-center",
+          autoClose: 2000,
+        });
+      });
+  };
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then(() => {
+        toast.success("Logged In", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+      })
+      .catch((error) => {
+        toast.error(error.message, {
+          position: "top-center",
+          autoClose: 2000,
+        });
+      });
+  };
   return (
-    <div className="bg-[#131313] text-white">
+    <div style={{ backgroundColor: bg, color: textC }}>
       <div className="w-[70%] mx-auto flex flex-row-reverse items-center justify-between py-20">
         <form
           onSubmit={handleRegistration}
@@ -96,8 +127,14 @@ const Registration = () => {
           />
           <p className="my-4">Or</p>
           <div className="flex gap-3">
-            <BsGoogle className="border rounded-full w-9 h-9 p-2 border-orange-400 cursor-pointer"></BsGoogle>
-            <AiOutlineGithub className="border rounded-full w-9 h-9 p-2 border-orange-400 cursor-pointer"></AiOutlineGithub>
+            <BsGoogle
+              onClick={handleGoogleLogin}
+              className="border rounded-full w-9 h-9 p-2 border-orange-400 cursor-pointer"
+            ></BsGoogle>
+            <AiOutlineGithub
+              onClick={handleGithubLogin}
+              className="border rounded-full w-9 h-9 p-2 border-orange-400 cursor-pointer"
+            ></AiOutlineGithub>
           </div>
           <p className="mt-5">
             Already have an Account{" "}

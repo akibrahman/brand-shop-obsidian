@@ -9,7 +9,8 @@ import loginsvg from "/login.svg";
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { logInUser, googleLogin, githubLogin } = useContext(AuthContext);
+  const { logInUser, googleLogin, githubLogin, bg, textC } =
+    useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -42,6 +43,7 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleLogin()
       .then(() => {
+        navigate(location?.state ? location.state : "/");
         toast.success("Logged In", {
           position: "top-center",
           autoClose: 2000,
@@ -57,6 +59,7 @@ const Login = () => {
   const handleGithubLogin = () => {
     githubLogin()
       .then(() => {
+        navigate(location?.state ? location.state : "/");
         toast.success("Logged In", {
           position: "top-center",
           autoClose: 2000,
@@ -70,7 +73,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="bg-[#131313] text-white">
+    <div style={{ backgroundColor: bg, color: textC }}>
       <div className="w-[70%] mx-auto flex items-center justify-between py-20">
         <form onSubmit={handleLogin} className="flex flex-col items-center">
           <p className="text-2xl font-semibold mb-8">Log In</p>
