@@ -1,3 +1,4 @@
+import propTypes from "prop-types";
 import { useContext } from "react";
 import { Dna } from "react-loader-spinner";
 import { Navigate, useLocation } from "react-router-dom";
@@ -26,4 +27,7 @@ const PrivateRoute = ({ children }) => {
   }
 };
 
+PrivateRoute.propTypes = {
+  children: propTypes.node.isRequired,
+};
 export default PrivateRoute;

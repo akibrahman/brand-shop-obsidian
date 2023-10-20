@@ -8,6 +8,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import propTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import app from "../../firebase.config";
 
@@ -71,4 +72,7 @@ const AuthProvider = ({ children }) => {
   );
 };
 
+AuthProvider.propTypes = {
+  children: propTypes.node.isRequired,
+};
 export default AuthProvider;
