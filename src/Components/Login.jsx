@@ -9,7 +9,7 @@ import loginsvg from "/login.svg";
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { logInUser } = useContext(AuthContext);
+  const { logInUser, googleLogin } = useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -18,6 +18,7 @@ const Login = () => {
     logInUser(email, password)
       .then(() => {
         navigate(location?.state ? location.state : "/");
+        console.log(location);
         toast.success("Logged In", {
           position: "top-center",
           autoClose: 2000,
@@ -36,6 +37,21 @@ const Login = () => {
             autoClose: 2000,
           });
         }
+      });
+  };
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then(() => {
+        toast.success("Logged In", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+      })
+      .catch((error) => {
+        toast.error(error.message, {
+          position: "top-center",
+          autoClose: 2000,
+        });
       });
   };
   return (
@@ -62,7 +78,10 @@ const Login = () => {
           />
           <p className="my-4">Or</p>
           <div className="flex gap-3">
-            <BsGoogle className="border rounded-full w-9 h-9 p-2 border-orange-400 cursor-pointer"></BsGoogle>
+            <BsGoogle
+              onClick={handleGoogleLogin}
+              className="border rounded-full w-9 h-9 p-2 border-orange-400 cursor-pointer"
+            ></BsGoogle>
             <AiOutlineGithub className="border rounded-full w-9 h-9 p-2 border-orange-400 cursor-pointer"></AiOutlineGithub>
           </div>
           <p className="mt-5">

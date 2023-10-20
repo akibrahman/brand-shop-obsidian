@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { Dna } from "react-loader-spinner";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "./AuthProvider";
 
@@ -10,6 +10,7 @@ const EditProduct = () => {
   const { _id, name, image, type, price, brandName, shortDes, rating } =
     useLoaderData();
   const navigate = useNavigate();
+  const location = useLocation();
   const [brands, setBrands] = useState(null);
   useEffect(() => {
     fetch("http://localhost:5000/brands")
@@ -40,7 +41,7 @@ const EditProduct = () => {
     Swal.fire({
       title: "Everything Entered OK?",
       text: "Your Modification will be applied",
-      icon: "info",
+      icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -62,7 +63,8 @@ const EditProduct = () => {
                 "Your Product has been deleted.",
                 "success"
               );
-              navigate(-1);
+              navigate("/");
+              console.log(location);
             }
           });
       }

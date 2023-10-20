@@ -26,9 +26,9 @@ const AddProduct = () => {
       rating,
     };
     Swal.fire({
-      title: "Are you sure?",
-      text: "Everything is perfectly Entered!",
-      icon: "info",
+      title: "Everything Entered OK?",
+      text: "Your product will be Added",
+      icon: "question",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -120,7 +120,6 @@ const AddProduct = () => {
                   Brand Name:
                 </label>
                 <select
-                  required
                   required
                   name="brandName"
                   className="px-4 py-3 rounded-md focus:outline-none text-[#9CA7C4]"

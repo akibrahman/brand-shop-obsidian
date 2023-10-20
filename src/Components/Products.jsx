@@ -75,7 +75,10 @@ const Products = () => {
           ))}
         </div>
       ) : (
-        <div className="bg-[#131313] text-white h-[50vh] flex items-center justify-center gap-10">
+        <div
+          style={{ backgroundColor: bg, color: textC }}
+          className="h-[50vh] flex items-center justify-center gap-10"
+        >
           <p className="text-3xl">There is no Product under this Brand</p>
           <img className="w-[250px]" src={empty} alt="" />
         </div>
