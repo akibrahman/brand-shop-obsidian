@@ -1,4 +1,5 @@
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
@@ -15,6 +16,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
   const [bg, setBg] = useState("#131313");
   const [textC, setTextC] = useState("#edf0f1");
   const [isDark, setIsDark] = useState(true);
@@ -50,6 +52,10 @@ const AuthProvider = ({ children }) => {
     setLoad(true);
     return signInWithPopup(auth, googleProvider);
   };
+  const githubLogin = () => {
+    setLoad(true);
+    return signInWithPopup(auth, githubProvider);
+  };
   const logOut = () => {
     setLoad(true);
     return signOut(auth);
@@ -66,6 +72,7 @@ const AuthProvider = ({ children }) => {
         createUser,
         logInUser,
         googleLogin,
+        githubLogin,
         logOut,
         isDark,
         setIsDark,

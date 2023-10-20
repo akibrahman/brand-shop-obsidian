@@ -9,7 +9,7 @@ import loginsvg from "/login.svg";
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { logInUser, googleLogin } = useContext(AuthContext);
+  const { logInUser, googleLogin, githubLogin } = useContext(AuthContext);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -54,6 +54,21 @@ const Login = () => {
         });
       });
   };
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then(() => {
+        toast.success("Logged In", {
+          position: "top-center",
+          autoClose: 2000,
+        });
+      })
+      .catch((error) => {
+        toast.error(error.message, {
+          position: "top-center",
+          autoClose: 2000,
+        });
+      });
+  };
   return (
     <div className="bg-[#131313] text-white">
       <div className="w-[70%] mx-auto flex items-center justify-between py-20">
@@ -82,7 +97,10 @@ const Login = () => {
               onClick={handleGoogleLogin}
               className="border rounded-full w-9 h-9 p-2 border-orange-400 cursor-pointer"
             ></BsGoogle>
-            <AiOutlineGithub className="border rounded-full w-9 h-9 p-2 border-orange-400 cursor-pointer"></AiOutlineGithub>
+            <AiOutlineGithub
+              onClick={handleGithubLogin}
+              className="border rounded-full w-9 h-9 p-2 border-orange-400 cursor-pointer"
+            ></AiOutlineGithub>
           </div>
           <p className="mt-5">
             Do not have an Account{" "}
