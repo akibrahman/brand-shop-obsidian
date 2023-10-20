@@ -21,8 +21,6 @@ const Review = () => {
             }}
             scrollbar={{ hide: false }}
             loop={true}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
           >
             <SwiperSlide className="mb-10">
               <div className="w-[500px] border rounded-xl p-5">

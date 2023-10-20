@@ -32,18 +32,23 @@ const DetailsProduct = () => {
       shortDes,
       rating,
     };
-    fetch("http://localhost:5000/cart/products")
+    fetch(
+      "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/cart/products"
+    )
       .then((res) => res.json())
       .then((data) => {
         const check = data.find((d) => d.productID === productID);
         if (!check) {
-          fetch("http://localhost:5000/addtocart", {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(thisProduct),
-          })
+          fetch(
+            "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/addtocart",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(thisProduct),
+            }
+          )
             .then((res) => res.json())
             .then(() => {
               Swal.fire({

@@ -1,10 +1,17 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
-import Scarecrow from "/Scarecrow.png";
+import { AuthContext } from "./AuthProvider";
+import Scarecrow from "/404.svg";
 
 const ErrorPage = () => {
+  const { isDark } = useContext(AuthContext);
   return (
     <div className="h-screen">
-      <div className="p-7 w-full h-full bg-[#131313] text-white">
+      <div
+        className={`p-7 w-full h-full ${
+          isDark ? "bg-[#131313]  text-white" : "bg-white text-[#131313]"
+        }`}
+      >
         <p className="text-2xl font-bold">404 not Found</p>
         <div className="flex flex-col md:flex-row items-center justify-center">
           <div className="flex justify-center">

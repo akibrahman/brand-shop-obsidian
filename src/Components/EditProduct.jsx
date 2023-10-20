@@ -13,7 +13,9 @@ const EditProduct = () => {
   const location = useLocation();
   const [brands, setBrands] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5000/brands")
+    fetch(
+      "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/brands"
+    )
       .then((res) => res.json())
       .then((data) => {
         setBrands(data);
@@ -48,13 +50,16 @@ const EditProduct = () => {
       confirmButtonText: "Yes, Update it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/product/edit/${_id}`, {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(updatedProduct),
-        })
+        fetch(
+          `https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/product/edit/${_id}`,
+          {
+            method: "PUT",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(updatedProduct),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.modifiedCount > 0) {

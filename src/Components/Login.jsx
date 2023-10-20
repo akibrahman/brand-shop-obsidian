@@ -20,7 +20,7 @@ const Login = () => {
       .then(() => {
         navigate(location?.state ? location.state : "/");
         console.log(location);
-        toast.success("Logged In", {
+        toast.success("Successfully Logged In", {
           position: "top-center",
           autoClose: 2000,
         });
@@ -44,7 +44,7 @@ const Login = () => {
     googleLogin()
       .then(() => {
         navigate(location?.state ? location.state : "/");
-        toast.success("Logged In", {
+        toast.success("Successfulle Logged In by Google", {
           position: "top-center",
           autoClose: 2000,
         });
@@ -60,7 +60,7 @@ const Login = () => {
     githubLogin()
       .then(() => {
         navigate(location?.state ? location.state : "/");
-        toast.success("Logged In", {
+        toast.success("Successfulle Logged In by Github", {
           position: "top-center",
           autoClose: 2000,
         });

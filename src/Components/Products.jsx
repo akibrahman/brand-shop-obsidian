@@ -6,6 +6,24 @@ import { Link, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import empty from "/empty.svg";
 
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import {
+  Autoplay,
+  EffectCoverflow,
+  Pagination,
+  Scrollbar,
+} from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "./Sliders.css";
+
+import ad1 from "/ad1.jpg";
+import ad2 from "/ad2.jpg";
+import ad3 from "/ad3.jpg";
+import ad4 from "/ad4.jpg";
+
 const Products = () => {
   const { isDark } = useContext(AuthContext);
   const data = useLoaderData();
@@ -30,6 +48,44 @@ const Products = () => {
           Total Products -{" "}
           <span className="text-orange-400">{data.length}</span>
         </p>
+      </div>
+      <div className="">
+        <Swiper
+          className="my-14"
+          grabCursor={true}
+          centeredSlides={true}
+          loop={true}
+          modules={[Scrollbar, Autoplay, Pagination, EffectCoverflow]}
+          effect={"coverflow"}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+          }}
+          spaceBetween={10}
+          slidesPerView={2}
+          scrollbar={{ draggable: true }}
+        >
+          <SwiperSlide>
+            <div className="">
+              <img className="w-full relative" src={ad1} alt="" />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="">
+              <img className="w-full relative" src={ad2} alt="" />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="">
+              <img className="w-full relative" src={ad3} alt="" />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="">
+              <img className="w-full relative" src={ad4} alt="" />
+            </div>
+          </SwiperSlide>
+        </Swiper>
       </div>
       {data.length > 0 ? (
         <div className="w-[80%] mx-auto grid grid-cols-4 gap-6 pb-20 mt-10 text-white">

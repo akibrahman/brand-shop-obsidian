@@ -26,7 +26,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () => fetch("http://localhost:5000/brands"),
+        loader: () =>
+          fetch(
+            "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/brands"
+          ),
         element: (
           <>
             <Banner></Banner>
@@ -38,7 +41,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/add-product",
-        loader: () => fetch("http://localhost:5000/brands"),
+        loader: () =>
+          fetch(
+            "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/brands"
+          ),
         element: (
           <PrivateRoute>
             <AddProduct></AddProduct>
@@ -48,7 +54,9 @@ const router = createBrowserRouter([
       {
         path: "/edit-product/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/product/edit/${params.id}`),
+          fetch(
+            `https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/product/edit/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <EditProduct></EditProduct>
@@ -57,7 +65,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-cart",
-        loader: () => fetch("http://localhost:5000/cart/products"),
+        loader: () =>
+          fetch(
+            "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/cart/products"
+          ),
         element: (
           <PrivateRoute>
             <MyCart></MyCart>
@@ -67,13 +78,17 @@ const router = createBrowserRouter([
       {
         path: "/products/:brand",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.brand}`),
+          fetch(
+            `https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/products/${params.brand}`
+          ),
         element: <Products></Products>,
       },
       {
         path: "/product/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/product/${params.id}`),
+          fetch(
+            `https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/product/${params.id}`
+          ),
         element: (
           <PrivateRoute>
             <DetailsProduct></DetailsProduct>

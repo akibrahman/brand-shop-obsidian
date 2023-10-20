@@ -35,13 +35,16 @@ const AddProduct = () => {
       confirmButtonText: "Yes, Submit",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("http://localhost:5000/product-add", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(newProduct),
-        })
+        fetch(
+          "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/product-add",
+          {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(newProduct),
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

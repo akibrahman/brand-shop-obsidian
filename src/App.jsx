@@ -10,7 +10,7 @@ function App() {
   const { isDark } = useContext(AuthContext);
   return (
     <div
-      className={`font-poppins duration-300 transition-all ease-in-out ${
+      className={`font-poppins duration-500 transition-all ease-in-out ${
         isDark ? "bg-[#edf0f1]" : "bg-[#131313]"
       } ${isDark ? "text-[#131313]" : "text-[#edf0f1]"}`}
     >
