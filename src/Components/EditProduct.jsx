@@ -47,6 +47,8 @@ const EditProduct = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
+      background: `${!isDark ? "#111" : "#fff"}`,
+      color: `${!isDark ? "#fff" : "#111"}`,
       confirmButtonText: "Yes, Update it!",
     }).then((result) => {
       if (result.isConfirmed) {
@@ -63,11 +65,13 @@ const EditProduct = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.modifiedCount > 0) {
-              Swal.fire(
-                "Updated!",
-                "Your Product has been deleted.",
-                "success"
-              );
+              Swal.fire({
+                icon: "success",
+                title: "Your product has been updated",
+                background: `${!isDark ? "#111" : "#fff"}`,
+                color: `${!isDark ? "#fff" : "#111"}`,
+                showConfirmButton: true,
+              });
               navigate("/");
               console.log(location);
             }

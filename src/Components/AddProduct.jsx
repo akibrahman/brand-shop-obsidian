@@ -29,6 +29,8 @@ const AddProduct = () => {
       title: "Everything Entered OK?",
       text: "Your product will be Added",
       icon: "question",
+      background: `${!isDark ? "#111" : "#fff"}`,
+      color: `${!isDark ? "#fff" : "#111"}`,
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
@@ -46,14 +48,15 @@ const AddProduct = () => {
           }
         )
           .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
+          .then(() => {
             form.reset();
-            Swal.fire(
-              "Added!",
-              "Your product has beeen added successfully",
-              "success"
-            );
+            Swal.fire({
+              icon: "success",
+              title: "Your product has been Added",
+              background: `${!isDark ? "#111" : "#fff"}`,
+              color: `${!isDark ? "#fff" : "#111"}`,
+              showConfirmButton: true,
+            });
           });
       }
     });

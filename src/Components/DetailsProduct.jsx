@@ -1,5 +1,6 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 
+import { useContext } from "react";
 import {
   AiOutlineArrowLeft,
   AiOutlineStar,
@@ -7,8 +8,10 @@ import {
 } from "react-icons/ai";
 import Rating from "react-rating";
 import Swal from "sweetalert2";
+import { AuthContext } from "./AuthProvider";
 
 const DetailsProduct = () => {
+  const { isDark } = useContext(AuthContext);
   const navigate = useNavigate();
   const data = useLoaderData();
   const {
@@ -54,6 +57,8 @@ const DetailsProduct = () => {
               Swal.fire({
                 icon: "success",
                 title: "Product Added to Cart",
+                background: `${!isDark ? "#111" : "#fff"}`,
+                color: `${!isDark ? "#fff" : "#111"}`,
                 showConfirmButton: true,
               });
             });
@@ -61,6 +66,8 @@ const DetailsProduct = () => {
           Swal.fire({
             icon: "info",
             title: "Product is Already Added",
+            background: `${!isDark ? "#111" : "#fff"}`,
+            color: `${!isDark ? "#fff" : "#111"}`,
             showConfirmButton: true,
           });
         }
