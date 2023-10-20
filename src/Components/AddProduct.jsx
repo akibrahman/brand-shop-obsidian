@@ -72,7 +72,7 @@ const AddProduct = () => {
           className={`${isDark ? "text-[#131313]" : "text-[#7e8185]"}`}
           onSubmit={handleForm}
         >
-          <div className="flex gap-20 justify-evenly pt-12 px-24 rounded-md">
+          <div className="flex flex-col md:flex-row gap-10 md:gap-20 justify-evenly pt-12 px-10 sm:px-14 md:px-20 lg:px-24 rounded-md">
             <div className="flex flex-col justify-between">
               <div className="flex flex-col gap-2">
                 <label className=" font-semibold text-md" htmlFor="">

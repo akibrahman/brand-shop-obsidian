@@ -100,7 +100,7 @@ const EditProduct = () => {
           onClick={() => {
             navigate(-1);
           }}
-          className="text-xl bg-orange-400 w-9 h-9 rounded-full p-2 cursor-pointer ml-56 mb-3 text-white"
+          className="text-xl bg-orange-400 w-9 h-9 rounded-full p-2 cursor-pointer ml-4 md:ml-20 lg:ml-56 mb-3 text-white"
         ></AiOutlineArrowLeft>
         <div
           className={`w-max mx-auto rounded-md border-2 ${
@@ -111,7 +111,7 @@ const EditProduct = () => {
             className={`${isDark ? "text-[#131313]" : "text-[#7e8185]"}`}
             onSubmit={handleForm}
           >
-            <div className="flex gap-20 justify-evenly pt-12 px-24 rounded-md">
+            <div className="flex flex-col md:flex-row gap-10 md:gap-20 justify-evenly pt-12 px-10 md:px-16 lg:px-24 rounded-md">
               <div className="flex flex-col justify-between">
                 <div className="flex flex-col gap-2">
                   <label className="font-semibold text-md" htmlFor="">

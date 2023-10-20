@@ -76,8 +76,8 @@ const DetailsProduct = () => {
 
   return (
     <div>
-      <div className="flex gap-8">
-        <div className="w-1/2 h-[calc(100vh-76px)] relative">
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className="w-full lg:w-1/2 lg:h-[calc(100vh-76px)] relative">
           <img className="w-full h-full" src={image} alt="" />
           <AiOutlineArrowLeft
             onClick={() => {
@@ -86,10 +86,10 @@ const DetailsProduct = () => {
             className="absolute left-5 top-5 text-xl bg-orange-400 w-9 h-9 rounded-full p-2 cursor-pointer text-white"
           ></AiOutlineArrowLeft>
         </div>
-        <div className="border-t-2 border-orange-400 py-10 w-1/2 h-[calc(100vh-76px)] overflow-y-scroll">
-          <p className="text-2xl font-semibold">
+        <div className="border-t-2 border-orange-400 py-10 mx-auto w-[95%] lg:w-1/2 lg:h-[calc(100vh-76px)] lg:overflow-y-scroll">
+          <p className="text-xl lg:text-2xl font-semibold">
             Product Name:{" "}
-            <span className="text-orange-400 text-3xl font-bold border-2 rounded-full px-5 py-2 ml-2">
+            <span className="text-orange-400 text-xl lg:text-2xl lg:text-3xl font-bold border-2 rounded-full px-5 py-2 ml-2">
               {name}
             </span>
           </p>
@@ -127,10 +127,10 @@ const DetailsProduct = () => {
                 initialRating={rating}
                 readonly
                 emptySymbol={
-                  <AiOutlineStar className="text-3xl text-orange-400"></AiOutlineStar>
+                  <AiOutlineStar className="text-2xl lg:text-3xl text-orange-400"></AiOutlineStar>
                 }
                 fullSymbol={
-                  <AiTwotoneStar className="text-3xl text-orange-400"></AiTwotoneStar>
+                  <AiTwotoneStar className="text-2xl lg:text-3xl text-orange-400"></AiTwotoneStar>
                 }
               />
             </div>

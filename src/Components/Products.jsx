@@ -31,20 +31,20 @@ const Products = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="pt-10 w-[90%] mx-auto flex items-center gap-3">
+      <div className="pt-10 w-[98%] md:w-[90%] mx-auto flex items-center gap-1 lg:gap-3">
         <AiOutlineArrowLeft
           onClick={() => {
             navigate(-1);
           }}
           className="text-xl bg-orange-400 w-9 h-9 rounded-full p-2 cursor-pointer"
         ></AiOutlineArrowLeft>
-        <p className="text-2xl">
+        <p className="text-lg md:text-xl lg:text-2xl">
           Products of{" "}
           <span className="text-orange-400 font-semibold border px-3 py-1 rounded-full">
             {brand.brand.charAt(0).toUpperCase() + brand.brand.slice(1)}
           </span>
         </p>
-        <p className="text-2xl">
+        <p className="text-lg md:text-xl lg:text-2xl">
           Total Products -{" "}
           <span className="text-orange-400">{data.length}</span>
         </p>
@@ -88,7 +88,7 @@ const Products = () => {
         </Swiper>
       </div>
       {data.length > 0 ? (
-        <div className="w-[80%] mx-auto grid grid-cols-4 gap-6 pb-20 mt-10 text-white">
+        <div className="w-[80%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pb-20 mt-10 text-white">
           {data.map((product) => (
             <div
               key={product._id}

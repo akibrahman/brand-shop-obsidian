@@ -41,11 +41,11 @@ const MyCart = () => {
   };
   return (
     <div>
-      <div className="grid grid-cols-2 w-[80%] mx-auto gap-6 py-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 w-[80%] mx-auto gap-6 py-20">
         {products.map((product) => (
           <div
             key={product._id}
-            className={`flex items-center gap-10 border-2 rounded-xl p-2 ${
+            className={`flex items-center gap-4 lg:gap-10 border-2 rounded-xl p-2 ${
               !isDark ? "bg-[#24252A]" : "bg-[#AAADB2]"
             }`}
           >

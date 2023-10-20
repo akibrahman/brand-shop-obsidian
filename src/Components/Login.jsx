@@ -76,18 +76,21 @@ const Login = () => {
     <div
       className={`${isDark ? "bg-[#AAADB2]" : "bg-[#131313] text-[#edf0f1]"}`}
     >
-      <div className="w-[70%] mx-auto flex items-center justify-between py-20">
-        <form onSubmit={handleLogin} className="flex flex-col items-center">
+      <div className="w-[70%] mx-auto flex flex-col lg:flex-row gap-10 items-center justify-between py-20">
+        <form
+          onSubmit={handleLogin}
+          className="w-full flex flex-col items-center"
+        >
           <p className="text-2xl font-semibold mb-8">Log In</p>
           <input
             placeholder="Enter Your E-mail"
-            className="focus:outline-none mb-4 rounded-xl pl-4 py-3 bg-orange-100 w-[400px] text-orange-600 font-semibold"
+            className="focus:outline-none mb-4 rounded-xl pl-4 py-3 bg-orange-100 lg:w-[400px] text-orange-600 font-semibold w-full"
             type="email"
             name="email"
           />
           <input
             placeholder="Enter Password"
-            className="focus:outline-none mb-6 rounded-xl pl-4 py-3 bg-orange-100 w-[400px] text-orange-600 font-semibold"
+            className="focus:outline-none mb-6 rounded-xl pl-4 py-3 bg-orange-100 lg:w-[400px] text-orange-600 font-semibold w-full"
             type="password"
             name="password"
           />
@@ -107,7 +110,7 @@ const Login = () => {
               className="border rounded-full w-9 h-9 p-2 border-orange-400 cursor-pointer"
             ></AiOutlineGithub>
           </div>
-          <p className="mt-5">
+          <p className="mt-5 text-center">
             Do not have an Account{" "}
             <Link to="/registration">
               <span

@@ -4,10 +4,14 @@ const MV = () => {
   return (
     <div className="my-16 px-10">
       <p className="text-center text-4xl">Our Goal</p>
-      <div className="flex flex-row-reverse items-center gap-6 mt-10">
-        <img className="w-[750px] rounded-lg" src={bnr} alt="" />
+      <div className="flex flex-col lg:flex-row-reverse items-center gap-6 mt-10">
+        <img
+          className="md:w-[550px] lg:w-[700px] rounded-lg"
+          src={bnr}
+          alt=""
+        />
         <div className="">
-          <p className={`text-orange-400 text-3xl mb-4`}>Our Mission:</p>
+          <p className={`text-orange-400 text-3xl mb-4`}>Our Mission :</p>
           <p className="border rounded-lg border-orange-400 p-3">
             To empower individuals to express their unique style and confidence
             through high-quality, sustainable fashion. We are dedicated to
@@ -15,7 +19,7 @@ const MV = () => {
             customers look great but also make a positive impact on the world
             through ethical and environmentally responsible practices
           </p>
-          <p className={`text-orange-400 text-3xl mb-4 mt-10`}>Our Vision</p>
+          <p className={`text-orange-400 text-3xl mb-4 mt-10`}>Our Vision :</p>
           <p className="border rounded-lg border-orange-400 p-3">
             To become a globally recognized fashion and apparel brand that leads
             the industry in sustainability and inclusivity. We aspire to be a

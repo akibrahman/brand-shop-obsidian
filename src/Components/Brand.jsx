@@ -5,7 +5,7 @@ const Brand = () => {
   return (
     <div className="pt-12">
       <p className="text-center text-4xl">Our Brands</p>
-      <div className="mt-10 rounded-md w-[70%] mx-auto  grid grid-cols-3 gap-5 p-3">
+      <div className="mt-10 rounded-md w-[70%] mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-3">
         {data.map((brand) => (
           <Link
             to={`/products/${brand.BrandName.toLowerCase()}`}

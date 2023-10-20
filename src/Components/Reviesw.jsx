@@ -8,12 +8,22 @@ import { Swiper, SwiperSlide } from "swiper/react";
 const Review = () => {
   return (
     <div className="py-16">
-      <div className="w-[70%] mx-auto">
+      <div className="w-full md:w-[70%] mx-auto">
         <p className="text-center text-4xl">Our Reviews</p>
         <div className="pt-10">
           <Swiper
-            spaceBetween={50}
-            slidesPerView={2}
+            spaceBetween={30}
+            // slidesPerView={2}
+            breakpoints={{
+              576: {
+                // width: 576,
+                slidesPerView: 1,
+              },
+              768: {
+                // width: 768,
+                slidesPerView: 2,
+              },
+            }}
             modules={[Autoplay, Scrollbar]}
             autoplay={{
               delay: 2000,
@@ -23,7 +33,7 @@ const Review = () => {
             loop={true}
           >
             <SwiperSlide className="mb-10">
-              <div className="w-[500px] border rounded-xl p-5">
+              <div className="w-[90%] mx-auto border rounded-xl p-5">
                 <div className="flex items-center gap-3">
                   <img
                     className="w-12 h-12 rounded-full"
@@ -53,7 +63,7 @@ const Review = () => {
               </div>
             </SwiperSlide>
             <SwiperSlide className="mb-10">
-              <div className="w-[500px] border rounded-xl p-5">
+              <div className="w-[90%] mx-auto border rounded-xl p-5">
                 <div className="flex items-center gap-3">
                   <img
                     className="w-12 h-12 rounded-full"
@@ -82,7 +92,7 @@ const Review = () => {
               </div>
             </SwiperSlide>
             <SwiperSlide className="mb-10">
-              <div className="w-[500px] border rounded-xl p-5">
+              <div className="w-[90%] mx-auto border rounded-xl p-5">
                 <div className="flex items-center gap-3">
                   <img
                     className="w-12 h-12 rounded-full"
@@ -112,7 +122,7 @@ const Review = () => {
               </div>
             </SwiperSlide>
             <SwiperSlide className="mb-10">
-              <div className="w-[500px] border rounded-xl p-5">
+              <div className="w-[90%] mx-auto border rounded-xl p-5">
                 <div className="flex items-center gap-3">
                   <img
                     className="w-12 h-12 rounded-full"

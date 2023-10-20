@@ -9,7 +9,7 @@ const Footer = () => {
     <footer
       className={`border-t ${isDark ? "bg-[#AAADB2]" : "bg-[#202126]"}   py-8`}
     >
-      <div className="w-[80%] mx-auto flex items-center justify-between">
+      <div className="w-[80%] mx-auto flex flex-col md:flex-row gap-8 items-center justify-between">
         <div className="">
           <p className="text-4xl mb-10">Obsidian</p>
           <div className="list-none mb-10">
@@ -30,11 +30,13 @@ const Footer = () => {
             <BsYoutube className="text-3xl"></BsYoutube>
           </div>
         </div>
-        <div className="space-y-4">
-          <p className="capitalize text-2xl">Subscribe us to Explore more</p>
+        <div className="space-y-4 w-full">
+          <p className="capitalize text-xl md:text-2xl">
+            Subscribe us to Explore more
+          </p>
           <div className="flex items-center">
             <input
-              className="outline-none bg-transparent border rounded-md px-5 py-3 rounded-e-none border-e-0"
+              className="w-[95%] outline-none bg-transparent border rounded-md px-5 py-3 rounded-e-none border-e-0"
               type="email"
               name=""
             />
@@ -48,7 +50,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <p className="text-xl text-center">&copy; 2023 Obsidian</p>
+      <p className="text-xl text-center mt-8">&copy; 2023 Obsidian</p>
     </footer>
   );
 };

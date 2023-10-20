@@ -102,7 +102,7 @@ const Registration = () => {
     <div
       className={`${isDark ? "bg-[#AAADB2]" : "bg-[#131313] text-[#edf0f1]"}`}
     >
-      <div className="w-[70%] mx-auto flex flex-row-reverse items-center justify-between py-20">
+      <div className="w-[70%] mx-auto flex flex-col lg:flex-row-reverse items-center gap-20 lg:gap-0 justify-between py-20">
         <form
           onSubmit={handleRegistration}
           className="flex flex-col items-center"
@@ -111,27 +111,27 @@ const Registration = () => {
           <input
             required
             placeholder="Enter Your Name"
-            className="focus:outline-none mb-4 rounded-xl pl-4 py-3 bg-orange-100 w-[400px] text-orange-600 font-semibold"
+            className="focus:outline-none mb-4 rounded-xl pl-4 py-3 bg-orange-100 w-full lg:w-[400px] text-orange-600 font-semibold"
             type="text"
             name="name"
           />
           <input
             required
             placeholder="Enter Your E-mail"
-            className="focus:outline-none mb-4 rounded-xl pl-4 py-3 bg-orange-100 w-[400px] text-orange-600 font-semibold"
+            className="focus:outline-none mb-4 rounded-xl pl-4 py-3 bg-orange-100 w-full lg:w-[400px] text-orange-600 font-semibold"
             type="email"
             name="email"
           />
           <input
             placeholder="Enter Your Photo URL"
-            className="focus:outline-none mb-4 rounded-xl pl-4 py-3 bg-orange-100 w-[400px] text-orange-600 font-semibold"
+            className="focus:outline-none mb-4 rounded-xl pl-4 py-3 bg-orange-100 w-full lg:w-[400px] text-orange-600 font-semibold"
             type="text"
             name="url"
           />
           <input
             required
             placeholder="Enter Password"
-            className="focus:outline-none mb-6 rounded-xl pl-4 py-3 bg-orange-100 w-[400px] text-orange-600 font-semibold"
+            className="focus:outline-none mb-6 rounded-xl pl-4 py-3 bg-orange-100 w-full lg:w-[400px] text-orange-600 font-semibold"
             type="password"
             name="password"
           />
@@ -155,7 +155,7 @@ const Registration = () => {
               className="border rounded-full w-9 h-9 p-2 border-orange-400 cursor-pointer"
             ></AiOutlineGithub>
           </div>
-          <p className="mt-5">
+          <p className="mt-5 text-center">
             Already have an Account{" "}
             <Link to="/login">
               {" "}

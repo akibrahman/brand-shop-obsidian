@@ -7,7 +7,6 @@ import { AuthContext } from "./AuthProvider";
 
 const NavBar = () => {
   const { isDark, setIsDark, user, logOut } = useContext(AuthContext);
-  // 24252a
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -23,7 +22,7 @@ const NavBar = () => {
   };
   return (
     <div className="font-poppins select-none">
-      <nav className="flex items-center justify-between w-[90%] mx-auto py-3">
+      <nav className="flex flex-col lg:flex-row items-center gap-4 lg:gap-0 lg:justify-between w-[90%] mx-auto py-3">
         <div className="">
           <p className="font-rancho text-4xl border-2 px-3 py-1 rounded-full border-orange-400">
             Obsidian
