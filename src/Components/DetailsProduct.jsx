@@ -36,14 +36,14 @@ const DetailsProduct = () => {
       rating,
     };
     fetch(
-      "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/cart/products"
+      "https://brand-shop-server-3qi9r082v-akib-rahmans-projects.vercel.app/cart/products"
     )
       .then((res) => res.json())
       .then((data) => {
         const check = data.find((d) => d.productID === productID);
         if (!check) {
           fetch(
-            "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/addtocart",
+            "https://brand-shop-server-3qi9r082v-akib-rahmans-projects.vercel.app/addtocart",
             {
               method: "POST",
               headers: {
@@ -103,7 +103,7 @@ const DetailsProduct = () => {
             <p>
               Brand:{" "}
               <span className="border-l-2 border-orange-400 pl-3 ml-3 rounded-md text-orange-400 font-semibold">
-                {brandName}
+                {brandName.charAt(0).toUpperCase() + brandName.slice(1)}
               </span>
             </p>
             <div className="pt-5 flex items-center justify-between pr-2">

@@ -23,11 +23,12 @@ const AuthProvider = ({ children }) => {
   const [load, setLoad] = useState(true);
   const [user, setUser] = useState(null);
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const un = onAuthStateChanged(auth, (user) => {
       setUser(user);
       console.log(user);
       setLoad(false);
     });
+    return () => un();
   }, [auth, AS]);
   const createUser = (email, password) => {
     setLoad(true);

@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         path: "/",
         loader: () =>
           fetch(
-            "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/brands"
+            "https://brand-shop-server-3qi9r082v-akib-rahmans-projects.vercel.app/brands"
           ),
         element: (
           <>
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
         path: "/add-product",
         loader: () =>
           fetch(
-            "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/brands"
+            "https://brand-shop-server-3qi9r082v-akib-rahmans-projects.vercel.app/brands"
           ),
         element: (
           <PrivateRoute>
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         path: "/edit-product/:id",
         loader: ({ params }) =>
           fetch(
-            `https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/product/edit/${params.id}`
+            `https://brand-shop-server-3qi9r082v-akib-rahmans-projects.vercel.app/product/edit/${params.id}`
           ),
         element: (
           <PrivateRoute>
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
         path: "/my-cart",
         loader: () =>
           fetch(
-            "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/cart/products"
+            "https://brand-shop-server-3qi9r082v-akib-rahmans-projects.vercel.app/cart/products"
           ),
         element: (
           <PrivateRoute>
@@ -79,7 +79,7 @@ const router = createBrowserRouter([
         path: "/products/:brand",
         loader: ({ params }) =>
           fetch(
-            `https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/products/${params.brand}`
+            `https://brand-shop-server-3qi9r082v-akib-rahmans-projects.vercel.app/products/${params.brand}`
           ),
         element: <Products></Products>,
       },
@@ -87,7 +87,7 @@ const router = createBrowserRouter([
         path: "/product/:id",
         loader: ({ params }) =>
           fetch(
-            `https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/product/${params.id}`
+            `https://brand-shop-server-3qi9r082v-akib-rahmans-projects.vercel.app/product/${params.id}`
           ),
         element: (
           <PrivateRoute>

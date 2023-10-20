@@ -38,7 +38,7 @@ const AddProduct = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/product-add",
+          "https://brand-shop-server-3qi9r082v-akib-rahmans-projects.vercel.app/product-add",
           {
             method: "POST",
             headers: {

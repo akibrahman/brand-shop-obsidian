@@ -30,13 +30,13 @@ const Footer = () => {
             <BsYoutube className="text-3xl"></BsYoutube>
           </div>
         </div>
-        <div className="space-y-4 w-full">
+        <div className="space-y-4 w-full md:w-auto">
           <p className="capitalize text-xl md:text-2xl">
             Subscribe us to Explore more
           </p>
           <div className="flex items-center">
             <input
-              className="w-[95%] outline-none bg-transparent border rounded-md px-5 py-3 rounded-e-none border-e-0"
+              className="w-[95%] lg:w-max outline-none bg-transparent border rounded-md px-5 py-3 rounded-e-none border-e-0"
               type="email"
               name=""
             />

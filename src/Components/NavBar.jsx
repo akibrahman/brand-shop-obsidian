@@ -4,6 +4,7 @@ import { BsSun } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "./AuthProvider";
+import logo from "/logo.png";
 
 const NavBar = () => {
   const { isDark, setIsDark, user, logOut } = useContext(AuthContext);
@@ -24,8 +25,9 @@ const NavBar = () => {
     <div className="font-poppins select-none">
       <nav className="flex flex-col lg:flex-row items-center gap-4 lg:gap-0 lg:justify-between w-[90%] mx-auto py-3">
         <div className="">
-          <p className="font-rancho text-4xl border-2 px-3 py-1 rounded-full border-orange-400">
+          <p className="font-rancho text-4xl border-2 px-3 py-1 rounded-full border-orange-400 flex items-center gap-3">
             Obsidian
+            <img className="w-10 h-10" src={logo} alt="" />
           </p>
         </div>
         <div className="flex items-center gap-6">

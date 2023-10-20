@@ -14,7 +14,7 @@ const EditProduct = () => {
   const [brands, setBrands] = useState(null);
   useEffect(() => {
     fetch(
-      "https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/brands"
+      "https://brand-shop-server-3qi9r082v-akib-rahmans-projects.vercel.app/brands"
     )
       .then((res) => res.json())
       .then((data) => {
@@ -53,7 +53,7 @@ const EditProduct = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://brand-shop-server-4dp125u6l-akib-rahmans-projects.vercel.app/product/edit/${_id}`,
+          `https://brand-shop-server-3qi9r082v-akib-rahmans-projects.vercel.app/product/edit/${_id}`,
           {
             method: "PUT",
             headers: {
