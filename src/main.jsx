@@ -14,6 +14,7 @@ import MyCart from "./Components/MyCart.jsx";
 import PrivateRoute from "./Components/PrivateRoute.jsx";
 import Products from "./Components/Products.jsx";
 import Registration from "./Components/Registration.jsx";
+import Review from "./Components/Reviesw.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
           <>
             <Banner></Banner>
             <Brand></Brand>
+            <Review></Review>
           </>
         ),
       },
