@@ -63,11 +63,11 @@ const MyCart = () => {
             </div>
             <div className="flex flex-col gap-4 mr-3">
               <Link to={`/product/${product.productID}`}>
-                <BsArrowRight className="bg-orange-500 w-9 h-9 rounded-full p-2"></BsArrowRight>
+                <BsArrowRight className="bg-orange-500 w-9 h-9 rounded-full p-2 text-white"></BsArrowRight>
               </Link>
               <MdDelete
                 onClick={() => handleDelete(product._id)}
-                className="bg-red-500 w-9 h-9 rounded-full p-2"
+                className="bg-red-500 w-9 h-9 rounded-full p-2 text-white"
               ></MdDelete>
             </div>
           </div>

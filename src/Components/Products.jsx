@@ -126,11 +126,11 @@ const Products = () => {
               </div>
               <div className="flex justify-end gap-3">
                 <Link to={`/edit-product/${product._id}`}>
-                  <HiPencil className="bg-orange-600 h-9 w-9 p-2 font-bold rounded-full active:scale-75 duration-300 cursor-pointer"></HiPencil>
+                  <HiPencil className="bg-orange-600 h-9 w-9 p-2 font-bold rounded-full active:scale-75 duration-300 cursor-pointer text-white"></HiPencil>
                 </Link>
                 <Link to={`/product/${product._id}`}>
                   {" "}
-                  <BsArrowRight className="bg-orange-600 h-9 w-9 p-2 font-bold rounded-full active:scale-75 duration-300 cursor-pointer"></BsArrowRight>
+                  <BsArrowRight className="bg-orange-600 h-9 w-9 p-2 font-bold rounded-full active:scale-75 duration-300 cursor-pointer text-white"></BsArrowRight>
                 </Link>
               </div>
             </div>

@@ -110,7 +110,7 @@ const DetailsProduct = () => {
               <p className="text-3xl text-orange-400 font-bold">${price}</p>
               <button
                 onClick={addToCart}
-                className="capitalize text-xl bg-orange-400 hover:bg-orange-500 duration-300 px-4 py-2 rounded-lg active:scale-75"
+                className="capitalize text-xl bg-orange-400 hover:bg-orange-500 duration-300 px-4 py-2 rounded-lg active:scale-75 text-white"
               >
                 Add to Cart
               </button>
