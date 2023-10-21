@@ -3,9 +3,9 @@ import { useLoaderData } from "react-router-dom";
 const Banner = () => {
   const brands = useLoaderData();
   return (
-    <div className="border rounded-lg flex items-center justify-between w-[90%] mx-auto p-20 mt-10">
+    <div className="border rounded-lg flex flex-col md:flex-row gap-10 xl:gap-0 items-center justify-between w-full md:w-[90%] mx-auto p-8 md:p-10 lg:p-20 mt-10">
       <div className="">
-        <p className="text-8xl font-semibold leading-[100px] italic">
+        <p className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold md:leading-[70px] lg:leading-[100px] italic text-center md:text-left">
           <span className={`text-orange-400`}>New</span> <br /> Collection{" "}
           <br />{" "}
           <span>
