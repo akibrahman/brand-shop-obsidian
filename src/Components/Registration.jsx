@@ -1,7 +1,8 @@
 import { updateProfile } from "firebase/auth";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { AiOutlineGithub } from "react-icons/ai";
 import { BsGoogle } from "react-icons/bs";
+import { ThreeCircles } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "./AuthProvider";
@@ -11,8 +12,12 @@ const Registration = () => {
   const { AS, setAS, auth, createUser, githubLogin, googleLogin, isDark } =
     useContext(AuthContext);
   const navigate = useNavigate();
+  const loader = useRef(null);
+
   const handleRegistration = (e) => {
     e.preventDefault();
+    loader.current.firstChild.classList.add("pr-12");
+    loader.current.lastChild.classList.remove("hidden");
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
@@ -23,18 +28,24 @@ const Registration = () => {
         position: "top-center",
         autoClose: 2000,
       });
+      loader.current.firstChild.classList.remove("pr-12");
+      loader.current.lastChild.classList.add("hidden");
       return;
     } else if (!/[A-Z]/.test(password)) {
       toast.warning("Password should have atleast one Uppercase", {
         position: "top-center",
         autoClose: 2000,
       });
+      loader.current.firstChild.classList.remove("pr-12");
+      loader.current.lastChild.classList.add("hidden");
       return;
     } else if (!/[@#$%&]/.test(password)) {
       toast.warning("Password should have atleast one Special character", {
         position: "top-center",
         autoClose: 2000,
       });
+      loader.current.firstChild.classList.remove("pr-12");
+      loader.current.lastChild.classList.add("hidden");
       return;
     }
     createUser(email, password)
@@ -52,14 +63,18 @@ const Registration = () => {
               autoClose: 2000,
             });
           })
-          .catch((error) =>
+          .catch((error) => {
+            loader.current.firstChild.classList.remove("pr-12");
+            loader.current.lastChild.classList.add("hidden");
             toast.error(error.code, {
               position: "top-center",
               autoClose: 2000,
-            })
-          );
+            });
+          });
       })
       .catch((error) => {
+        loader.current.firstChild.classList.remove("pr-12");
+        loader.current.lastChild.classList.add("hidden");
         toast.error(error.code, {
           position: "top-center",
           autoClose: 2000,
@@ -139,11 +154,29 @@ const Registration = () => {
             <input name="condition" type="checkbox" required />
             <p>Accept our Terms & Conditions</p>
           </div>
-          <input
-            className="bg-orange-400 px-8 py-2 rounded-full font-semibold"
-            type="submit"
-            value="Register"
-          />
+          <div ref={loader} className="flex items-center relative">
+            <input //pr-12
+              className="bg-orange-400 px-8 py-2 rounded-full font-semibold"
+              type="submit"
+              value="Register"
+            />
+
+            <div className="hidden absolute right-2">
+              {/* hidden */}
+              <ThreeCircles
+                height="25"
+                width="25"
+                color="#fff"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel="three-circles-rotating"
+                outerCircleColor=""
+                innerCircleColor=""
+                middleCircleColor=""
+              />
+            </div>
+          </div>
           <p className="my-4">Or</p>
           <div className="flex gap-3">
             <BsGoogle

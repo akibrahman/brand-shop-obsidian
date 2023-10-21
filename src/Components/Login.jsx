@@ -1,6 +1,7 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { AiOutlineGithub } from "react-icons/ai";
 import { BsGoogle } from "react-icons/bs";
+import { ThreeCircles } from "react-loader-spinner";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "./AuthProvider";
@@ -11,22 +12,26 @@ const Login = () => {
   const navigate = useNavigate();
   const { logInUser, googleLogin, githubLogin, isDark } =
     useContext(AuthContext);
+  const loader = useRef(null);
+
   const handleLogin = (e) => {
     e.preventDefault();
+    loader.current.firstChild.classList.add("pr-12");
+    loader.current.lastChild.classList.remove("hidden");
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     logInUser(email, password)
       .then(() => {
         navigate(location?.state ? location.state : "/");
-        console.log(location);
         toast.success("Successfully Logged In", {
           position: "top-center",
           autoClose: 2000,
         });
       })
       .catch((error) => {
-        console.log(error);
+        loader.current.firstChild.classList.remove("pr-12");
+        loader.current.lastChild.classList.add("hidden");
         if (error.code == "auth/invalid-login-credentials") {
           toast.error("Invalid user or password", {
             position: "top-center",
@@ -94,11 +99,29 @@ const Login = () => {
             type="password"
             name="password"
           />
-          <input
-            className="bg-orange-400 px-8 py-2 rounded-full font-semibold"
-            type="submit"
-            value="Login"
-          />
+          <div ref={loader} className="flex items-center relative">
+            <input //pr-12
+              className="bg-orange-400 px-8 py-2 rounded-full font-semibold"
+              type="submit"
+              value="Login"
+            />
+
+            <div className="hidden absolute right-2">
+              {/* hidden */}
+              <ThreeCircles
+                height="25"
+                width="25"
+                color="#fff"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+                ariaLabel="three-circles-rotating"
+                outerCircleColor=""
+                innerCircleColor=""
+                middleCircleColor=""
+              />
+            </div>
+          </div>
           <p className="my-4">Or</p>
           <div className="flex gap-3">
             <BsGoogle

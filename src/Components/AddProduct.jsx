@@ -6,6 +6,7 @@ import { AuthContext } from "./AuthProvider";
 const AddProduct = () => {
   const { isDark } = useContext(AuthContext);
   const data = useLoaderData();
+
   const handleForm = (e) => {
     e.preventDefault();
     const form = e.target;
